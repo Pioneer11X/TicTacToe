@@ -17,7 +17,11 @@ class HelloScene: SKScene{
     var optionsButton: SKLabelNode;
     var quitButton: SKLabelNode;
     
-    override init(size: CGSize) {
+    var gameManager: GameViewController;
+    
+    init(size: CGSize, gameManager: GameViewController) {
+        
+        self.gameManager = gameManager;
         
         GameName = SKLabelNode(fontNamed: GameData.gameData.fontName);
         GameName.fontSize = 52;

@@ -16,6 +16,7 @@
 		A049E6E11DC2E1F7002FEE0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A049E6E01DC2E1F7002FEE0C /* Assets.xcassets */; };
 		A049E6E41DC2E1F7002FEE0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A049E6E21DC2E1F7002FEE0C /* LaunchScreen.storyboard */; };
 		A049E6EE1DC2E6F8002FEE0C /* HelloScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A049E6ED1DC2E6F8002FEE0C /* HelloScene.swift */; };
+		A08418521DC382930026103D /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08418511DC382930026103D /* LevelScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A049E6E31DC2E1F7002FEE0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A049E6E51DC2E1F7002FEE0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A049E6ED1DC2E6F8002FEE0C /* HelloScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloScene.swift; sourceTree = "<group>"; };
+		A08418511DC382930026103D /* LevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelScene.swift; path = ../../../../LevelScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		A049E6D21DC2E1F7002FEE0C /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				A08418501DC3827E0026103D /* Scenes */,
 				A049E6D31DC2E1F7002FEE0C /* AppDelegate.swift */,
 				A049E6D51DC2E1F7002FEE0C /* GameScene.sks */,
 				A049E6D71DC2E1F7002FEE0C /* Actions.sks */,
@@ -71,9 +74,17 @@
 				A049E6E01DC2E1F7002FEE0C /* Assets.xcassets */,
 				A049E6E21DC2E1F7002FEE0C /* LaunchScreen.storyboard */,
 				A049E6E51DC2E1F7002FEE0C /* Info.plist */,
-				A049E6ED1DC2E6F8002FEE0C /* HelloScene.swift */,
 			);
 			path = TicTacToe;
+			sourceTree = "<group>";
+		};
+		A08418501DC3827E0026103D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A049E6ED1DC2E6F8002FEE0C /* HelloScene.swift */,
+				A08418511DC382930026103D /* LevelScene.swift */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,7 +119,7 @@
 				TargetAttributes = {
 					A049E6CF1DC2E1F7002FEE0C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = KT6L3A8T5R;
+						DevelopmentTeam = 8Y28UR94RA;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -155,6 +166,7 @@
 				A049E6EE1DC2E6F8002FEE0C /* HelloScene.swift in Sources */,
 				A049E6DC1DC2E1F7002FEE0C /* GameViewController.swift in Sources */,
 				A049E6D41DC2E1F7002FEE0C /* AppDelegate.swift in Sources */,
+				A08418521DC382930026103D /* LevelScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KT6L3A8T5R;
+				DEVELOPMENT_TEAM = 8Y28UR94RA;
 				INFOPLIST_FILE = TicTacToe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sample.TicTacToe;
@@ -290,7 +302,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KT6L3A8T5R;
+				DEVELOPMENT_TEAM = 8Y28UR94RA;
 				INFOPLIST_FILE = TicTacToe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sample.TicTacToe;
@@ -318,6 +330,7 @@
 				A049E6EA1DC2E1F7002FEE0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

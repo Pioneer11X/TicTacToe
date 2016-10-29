@@ -23,12 +23,27 @@ public class GameData{
     
 }
 
+public class GameState{
+    
+    var isMultiplayer = false;
+    var isPlayer1Turn = false;
+    var isPlayer2Turn = false;
+    var isAITurn = false;
+    
+    private init(){
+        // Nope.
+    }
+    
+    static var gameState = GameState();
+    
+}
+
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
+//        if let view = self.view as! SKView? {
 //            // Load the SKScene from 'GameScene.sks'
 //            if let scene = SKScene(fileNamed: "HelloScene") {
 //                // Set the scale mode to scale to fit the window
@@ -38,14 +53,34 @@ class GameViewController: UIViewController {
 //                view.presentScene(scene)
 //            }
             
-            let scene = HelloScene(size: GameData.gameData.screenSize);
-            scene.scaleMode = .aspectFill;
+//            let scene = HelloScene(size: GameData.gameData.screenSize, gameManager: self);
+//            scene.scaleMode = .aspectFill;
+//            view.presentScene(scene);
+//            
+//            view.ignoresSiblingOrder = true
+//            
+//            view.showsFPS = true
+//            view.showsNodeCount = true
+//        }
+        
+//        loadHomeScene();
+        loadLevelScene();
+        
+    }
+    
+    func loadHomeScene(){
+        let scene = HelloScene(size: GameData.gameData.screenSize, gameManager: self);
+        scene.scaleMode = .aspectFill;
+        if let view = self.view as! SKView? {
             view.presentScene(scene);
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
+        }
+    }
+    
+    func loadLevelScene(){
+        let scene = LevelScene(size: GameData.gameData.screenSize, gameManager: self);
+        scene.scaleMode = .aspectFill;
+        if let view = self.view as! SKView? {
+            view.presentScene(scene);
         }
     }
 
