@@ -37,7 +37,7 @@ class HelloScene: SKScene{
     
     override func didMove(to view: SKView) {
         
-        var labels: [SKLabelNode:String] = [GameName: "Tic Tac Toe", singlePlayerButton:"Single Player Game", multiPlayerButton:"Multiplayer Game", optionsButton:"Options", quitButton:"Quit"];
+        let labels: [SKLabelNode:String] = [GameName: "Tic Tac Toe", singlePlayerButton:"Single Player Game", multiPlayerButton:"Multiplayer Game", optionsButton:"Options", quitButton:"Quit"];
         
         
         self.fillLabels(labels: labels);
@@ -73,6 +73,23 @@ class HelloScene: SKScene{
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first{
+            if singlePlayerButton.contains(touch.location(in: self)){
+                print("ME VS AI");
+                GameState.gameState.isMultiplayer = false;
+            } else if multiPlayerButton.contains(touch.location(in: self)){
+                self.gameManager.loadLevelScene();
+                GameState.gameState.isMultiplayer = true;
+                GameState.gameState.isPlayer1Turn = true;
+            } else if optionsButton.contains(touch.location(in: self)){
+                print("Options selected");
+            } else if quitButton.contains(touch.location(in: self)){
+                print("You sure?");
+            }
+        }
     }
     
 }

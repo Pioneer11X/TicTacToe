@@ -12,7 +12,8 @@ import GameplayKit
 
 public class GameData{
     
-    let fontName = "AmericanTypewriter ";
+    let fontName = "AmericanTypewriter";
+    let fontNameBold = "AmericanTypewriter-Bold";
     var screenSize: CGSize = CGSize(width:UIScreen.main.bounds.width, height: UIScreen.main.bounds.height);
     
     private init() {
@@ -36,6 +37,26 @@ public class GameState{
     
     static var gameState = GameState();
     
+}
+
+public class GameMatrix{
+    
+    var segments: [segmentFill] = [segmentFill.none, segmentFill.none, segmentFill.none,
+                                   segmentFill.none, segmentFill.none, segmentFill.none,
+                                   segmentFill.none, segmentFill.none, segmentFill.none];
+    
+    private init(){
+        // Nope.
+    }
+    
+    static var gameMatrix = GameMatrix();
+    
+}
+
+enum segmentFill{
+    case x;
+    case o;
+    case none;
 }
 
 class GameViewController: UIViewController {
@@ -63,8 +84,8 @@ class GameViewController: UIViewController {
 //            view.showsNodeCount = true
 //        }
         
-//        loadHomeScene();
-        loadLevelScene();
+        loadHomeScene();
+//        loadLevelScene();
         
     }
     
@@ -82,6 +103,47 @@ class GameViewController: UIViewController {
         if let view = self.view as! SKView? {
             view.presentScene(scene);
         }
+    }
+    
+    func checkWinCondition() -> (Bool,segmentFill){
+        // To check the win condition, We can do this, we select the diagonal row and check for each of those places if it is part of a win condition.
+        
+        // Listing all the win conditions
+        if ( GameMatrix.gameMatrix.segments[0] == GameMatrix.gameMatrix.segments[1] ) && ( GameMatrix.gameMatrix.segments[0] == GameMatrix.gameMatrix.segments[2] ) && ( GameMatrix.gameMatrix.segments[0] != segmentFill.none ){
+            // Win condition.
+            return (true,GameMatrix.gameMatrix.segments[0]);
+        }
+        if ( GameMatrix.gameMatrix.segments[3] == GameMatrix.gameMatrix.segments[4] ) && ( GameMatrix.gameMatrix.segments[3] == GameMatrix.gameMatrix.segments[5] ) && ( GameMatrix.gameMatrix.segments[3] != segmentFill.none ){
+            // Win condition.
+            return (true,GameMatrix.gameMatrix.segments[3]);
+        }
+        if ( GameMatrix.gameMatrix.segments[6] == GameMatrix.gameMatrix.segments[7] ) && ( GameMatrix.gameMatrix.segments[6] == GameMatrix.gameMatrix.segments[8] ) && ( GameMatrix.gameMatrix.segments[6] != segmentFill.none ){
+            // Win condition.
+            return (true,GameMatrix.gameMatrix.segments[6]);
+        }
+        if ( GameMatrix.gameMatrix.segments[0] == GameMatrix.gameMatrix.segments[3] ) && ( GameMatrix.gameMatrix.segments[0] == GameMatrix.gameMatrix.segments[6] ) && ( GameMatrix.gameMatrix.segments[0] != segmentFill.none ){
+            // Win condition.
+            return (true,GameMatrix.gameMatrix.segments[0]);
+        }
+        if ( GameMatrix.gameMatrix.segments[1] == GameMatrix.gameMatrix.segments[4] ) && ( GameMatrix.gameMatrix.segments[1] == GameMatrix.gameMatrix.segments[7] ) && ( GameMatrix.gameMatrix.segments[1] != segmentFill.none ){
+            // Win condition.
+            return (true,GameMatrix.gameMatrix.segments[1]);
+        }
+        if ( GameMatrix.gameMatrix.segments[2] == GameMatrix.gameMatrix.segments[5] ) && ( GameMatrix.gameMatrix.segments[2] == GameMatrix.gameMatrix.segments[8] ) && ( GameMatrix.gameMatrix.segments[2] != segmentFill.none ){
+            // Win condition.
+            return (true,GameMatrix.gameMatrix.segments[2]);
+        }
+        if ( GameMatrix.gameMatrix.segments[0] == GameMatrix.gameMatrix.segments[4] ) && ( GameMatrix.gameMatrix.segments[0] == GameMatrix.gameMatrix.segments[8] ) && ( GameMatrix.gameMatrix.segments[0] != segmentFill.none ){
+            // Win condition.
+            return (true,GameMatrix.gameMatrix.segments[0]);
+        }
+        if ( GameMatrix.gameMatrix.segments[2] == GameMatrix.gameMatrix.segments[4] ) && ( GameMatrix.gameMatrix.segments[2] == GameMatrix.gameMatrix.segments[6] ) && ( GameMatrix.gameMatrix.segments[2] != segmentFill.none ){
+            // Win condition.
+            return (true,GameMatrix.gameMatrix.segments[2]);
+        }else{
+            return (false,GameMatrix.gameMatrix.segments[0]);
+        }
+
     }
 
     override var shouldAutorotate: Bool {
